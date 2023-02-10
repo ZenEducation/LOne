@@ -1,11 +1,12 @@
 <template>
   <!-- Sidebar Panel -->
-  <div class="my-sidebar-panel">
+  <div class="fixed xl:static top-0 left-0 z-40 h-full shrink-0 translate-x-full transform-gpu transition-transform duration-200 ease-in translate-x-0">
     <div
-      class="flex h-full max-w-sm grow flex-col ml-0 pl-[var(--main-sidebar-width)] bg-white dark:bg-navy-750"
+      class="flex h-screen max-w-sm grow flex-col ml-0 md:pl-[var(--main-sidebar-width)] bg-white dark:bg-navy-750"
     >
       <!-- Sidebar Panel Header -->
       <div class="flex h-18 w-full items-center justify-between pl-4 pr-1">
+        <!-- on open -->
         <div class="flex items-center">
           <div class="avatar mr-3 hidden h-9 w-9 lg:flex">
             <div
@@ -33,9 +34,10 @@
             Chat
           </p>
         </div>
-
+        <!-- onclose -->
         <button
-          class="sidebar-close btn h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden"
+          @click="toggleSidebar(false)"
+          class="h-7 w-7 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent-light/80 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 xl:hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +88,7 @@
             >
               <div
                 class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
+                v-for="story in stories" :key="story"
               >
                 <div
                   class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
@@ -99,319 +102,13 @@
                 <p
                   class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
                 >
-                  Konnor
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Travis
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Fuller
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Alfredo
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Elliott
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Derrick
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Simmons
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Katrina
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Henry
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Curtis
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Bradley
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Samantha
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Corey
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Lance
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Tucker
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Jensen
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Perkins
-                </p>
-              </div>
-              <div
-                class="swiper-slide flex w-11 shrink-0 flex-col items-center justify-center"
-              >
-                <div
-                  class="h-11 w-11 rounded-full bg-gradient-to-r from-purple-500 to-orange-600 p-0.5"
-                >
-                  <img
-                    class="h-full w-full rounded-full border-2 border-white object-cover dark:border-slate-700"
-                    src="@/assets/images/200x200.png"
-                    alt="avatar"
-                  />
-                </div>
-                <p
-                  class="mt-1 w-14 break-words text-center text-xs text-slate-600 line-clamp-1 dark:text-navy-100"
-                >
-                  Evans
+                  {{story}}
                 </p>
               </div>
             </div>
           </div>
         </div>
-
+        <!-- input field -->
         <div class="mt-4 flex px-4">
           <label class="relative flex">
             <input
@@ -1005,16 +702,16 @@
         </div>
 
         <div
-          class="flex bg-gray-700 h-12 shrink-0 justify-between border-t border-slate-150 px-1.5 py-1 dark:border-navy-600"
+          class="flex h-12 shrink-0 justify-between border-t border-slate-150 px-1.5 py-1 dark:border-navy-600"
         >
           <a
             href="#"
             data-tooltip="All Chats"
-            class="btn h-9 w-9 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+            class="h-9 w-9 rounded-full text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 mx-auto mt-2"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -1029,11 +726,11 @@
           <a
             href="#"
             data-tooltip="Users"
-            class="btn h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+            class="h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 mx-auto mt-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -1049,11 +746,11 @@
           <a
             href="#"
             data-tooltip="Groups"
-            class="btn h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+            class="h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 mx-auto mt-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -1069,11 +766,11 @@
           <a
             href="#"
             data-tooltip="Channels"
-            class="btn h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+            class="h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 mx-auto mt-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -1089,11 +786,11 @@
           <a
             href="#"
             data-tooltip="More"
-            class="btn h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+            class="h-9 w-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              class="h-5 w-5 mx-auto mt-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -1113,5 +810,14 @@
 </template>
 
 <script setup>
-let isShowChatInfo = true;
+import { ref } from 'vue';
+import { useChatStore } from '@/stores/chat';
+import { storeToRefs } from 'pinia'
+
+const storiesData = ['Konnor', 'travis', 'jack', 'Peter', 'Champa', 'Kunal', 'Reena', 'jackson', 'naruto', 'eren']
+const stories = ref(storiesData)
+const store = useChatStore()
+const { getSidebarStatus } = storeToRefs(store)
+const {toggleSidebar} = store
+
 </script>
