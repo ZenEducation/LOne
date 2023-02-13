@@ -1,4 +1,5 @@
 <template>
+feat/chatApp
   <!-- <div
       id="root"
       class="min-h-100vh cloak flex grow bg-slate-50 dark:bg-navy-900"
@@ -13,6 +14,7 @@
     <ChatMain />
     <RightSidebar />
   </div>
+
 </template>
 
 <script setup>
