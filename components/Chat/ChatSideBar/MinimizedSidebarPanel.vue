@@ -1,5 +1,4 @@
 <template>
-  <!-- Minimized Sidebar Panel Isolated-->
   <div class="pl-[var(--main-sidebar-width)] h-screen hidden md:block">
     <div class="flex h-full flex-col bg-white xl:px-[0.5rem] dark:bg-navy-750">
       <div class="flex h-18 waitshrink-0 items-center justify-center">
@@ -77,6 +76,7 @@
           <div class="flex flex-col">
             <div
               class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
+              v-for="chat in getUserChats" :key="chat"
             >
               <div class="avatar h-10 w-10">
                 <img
@@ -85,203 +85,13 @@
                   alt="avatar"
                 />
                 <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                ></div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"
+                  :class="chat.isOnline ? 'bg-primary dark:border-navy-700 dark:bg-accent' : 'border-white bg-slate-300 dark:border-navy-700'"
+                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white "
                 >
-                  <span
+                <span v-show="chat.isOnline"
                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-80 dark:bg-accent"
                   ></span>
                 </div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                ></div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                ></div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                ></div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"
-                >
-                  <span
-                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-80 dark:bg-accent"
-                  ></span>
-                </div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                ></div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-                <div
-                  class="absolute right-0 h-3 w-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                ></div>
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div
-              class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-            >
-              <div class="avatar h-10 w-10">
-                <img
-                  class="rounded-full"
-                  src="@/assets/images/200x200.png"
-                  alt="avatar"
-                />
               </div>
             </div>
           </div>
@@ -311,3 +121,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { useChatStore } from '@/stores/chat';
+import { storeToRefs } from 'pinia'
+const store = useChatStore()
+const { getUserChats } = storeToRefs(store)
+</script>

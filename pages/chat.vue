@@ -17,9 +17,9 @@
 
 <script setup>
 import ChatSidebar from "~~/components/Chat/ChatSideBar/index.vue";
-import ChatMain from "~~/components/Chat/Chatmain.vue";
+import ChatMain from "~~/components/Chat/ChatMain/index.vue";
 import AppPreLoader from "~~/components/Chat/AppPreLoader.vue";
-import RightSidebar from "~~/components/Chat/RightSidebar.vue";
+import RightSidebar from "~~/components/Chat/RightSideBar/index.vue";
 import { ref } from "vue";
 const isLoading = ref(true)
 onMounted(() => {
