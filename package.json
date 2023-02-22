@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "start": "vite",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -16,11 +17,11 @@
     "@pinia/nuxt": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@types/chart.js": "^2.9.37",
-    "autoprefixer": "^10.4.11",
+    "autoprefixer": "^10.4.13",
     "nuxt": "3.0.0",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.21",
     "sass": "^1.57.0",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.2.7"
   },
   "dependencies": {
     "@aws-amplify/ui-vue": "^3.0.4",
@@ -33,6 +34,7 @@
     "@rollup/plugin-inject": "^5.0.2",
     "@rollup/plugin-terser": "^0.2.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@vueuse/core": "^9.13.0",
     "aws-amplify": "^5.0.5",
     "gridjs-vue": "^5.0.4",
     "numeral": "^2.0.6",
@@ -45,6 +47,7 @@
     "sortablejs-vue3": "^1.2.6",
     "swiper": "^9.0.3",
     "uuid4": "^2.0.3",
+    "vite": "^3.2.5",
     "vue": "^3.2.33",
     "vue-cleave-component": "^3.0.2",
     "vue-dayjs": "^1.0.2",

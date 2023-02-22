@@ -12,13 +12,16 @@
   cursor: grab;
 }
 
+.padd {
+  padding-left: 169px;
+}
 
 @supports selector(::-webkit-scrollbar) {
   .kanban-scrollbar::-webkit-scrollbar {
     @apply h-2.5;
   }
 
-  .kanban-scrollbar::-webkit-scrollbar-thumb{
+  .kanban-scrollbar::-webkit-scrollbar-thumb {
     @apply rounded-full bg-slate-400/80 dark:bg-navy-400;
   }
 
