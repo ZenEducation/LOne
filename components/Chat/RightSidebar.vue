@@ -1,12 +1,358 @@
 <template>
   <!-- Right Sidebar -->
-  <div id="right-sidebar" class="drawer drawer-right">
-    <div
-      class="drawer-overlay fixed inset-0 z-[150] hidden bg-slate-900/60"
-    ></div>
-    <div
-      class="drawer-content fixed right-0 top-0 z-[151] hidden h-full w-full sm:w-80"
-    >
+  <div v-show="getRightSidebarStatus">
+    <div>
+      <div class="fixed xl:static right-0 top-0 z-[101] h-full w-full sm:w-80">
+        <div
+          class="flex h-full w-full flex-col border-l border-slate-150 bg-white transition-transform duration-200 dark:border-navy-600 dark:bg-navy-750"
+        >
+          <div class="flex h-[60px] items-center justify-between p-4">
+            <h3 class="text-base font-medium text-slate-700 dark:text-navy-100">
+              Chat Info
+            </h3>
+            <div class="-mr-1.5 flex space-x-1">
+              <button
+                class="inline-flex h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="m-auto h-5.5 w-5.5 text-slate-500 dark:text-navy-100"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  />
+                </svg>
+              </button>
+
+              <button
+                @click="setDarkMode(!darkMode)"
+                class="inline-flex darkmode-toggle h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="darkmode-moon h-6 w-6 text-amber-400 m-auto"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.75 3.412a.818.818 0 01-.07.917 6.332 6.332 0 00-1.4 3.971c0 3.564 2.98 6.494 6.706 6.494a6.86 6.86 0 002.856-.617.818.818 0 011.1 1.047C19.593 18.614 16.218 21 12.283 21 7.18 21 3 16.973 3 11.956c0-4.563 3.46-8.31 7.925-8.948a.818.818 0 01.826.404z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="darkmode-sun h-6 w-6 text-amber-400 m-auto"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <button
+                @click="toggleRightSidebar(false)"
+                class="h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-col items-center">
+            <div class="relative inline-flex object-center object-cover h-20 w-20">
+              <img class="rounded-full w-full h-full" src="@/assets/images/200x200.png" alt="avatar" />
+            </div>
+            <h3 class="mt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
+              Konnor Guzman
+            </h3>
+            <p>Frontend Developer</p>
+            <div class="mt-2 flex space-x-1.5">
+              <button
+                class="inline-flex h-10 w-10 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 m-auto"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+              </button>
+              <button
+                class="inline-flex h-10 w-10 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 m-auto"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+              </button>
+              <button
+                class="inline-flex h-10 w-10 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 m-auto"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col">
+            <div class="is-scrollbar-hidden overflow-x-auto px-4">
+              <div class="flex">
+                <button
+                  @click="setActiveTab('images')"
+                  class="hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100 shrink-0 rounded-none border-b-2 px-3 py-2 mx-1 font-medium"
+                  :class="activeTab === 'images' ? 'border-b border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent '"
+                >
+                  Images
+                </button>
+                <button
+                  @click="setActiveTab('files')"
+                  class="hover:text-slate-800 focus:text-slate-800 dark:hover:text-navy-100 dark:focus:text-navy-100 shrink-0 rounded-none border-b-2 px-3 py-2 mx-1 font-medium"
+                  :class="activeTab === 'files' ? 'border-b border-primary dark:border-accent text-primary dark:text-accent-light' : 'border-transparent '"
+                >
+                  Files
+                </button>
+              </div>
+            </div>
+            <div class="px-4 pt-4">
+              <div v-show="activeTab === 'images'" class="">
+                <div class="grid grid-cols-4 gap-2">
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                  <img
+                    class="aspect-square rounded-lg object-cover object-center"
+                    src="@/assets/images/800x600.png"
+                    alt="image"
+                  />
+                </div>
+              </div>
+              <div>
+                <div v-show="activeTab === 'files'" class="flex flex-col space-y-3.5">
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="mask is-squircle flex h-11 w-11 items-center justify-center bg-secondary text-white"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-700 dark:text-navy-100">
+                        Slow Music
+                      </p>
+                      <div class="flex text-xs text-slate-400 dark:text-navy-300">
+                        <span>03:12</span>
+                        <div class="mx-2 my-1 w-px bg-slate-200 dark:bg-navy-500"></div>
+
+                        <span>8.32 MB</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="mask is-squircle flex h-11 w-11 items-center justify-center bg-info text-white"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-700 dark:text-navy-100">
+                        Final.fig
+                      </p>
+                      <div class="flex text-xs text-slate-400 dark:text-navy-300">
+                        <span>45 MB</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="mask is-squircle flex h-11 w-11 items-center justify-center bg-warning text-white"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-700 dark:text-navy-100">
+                        Report.docx
+                      </p>
+                      <div class="flex text-xs text-slate-400 dark:text-navy-300">
+                        <span>3.5 MB</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="mask is-squircle flex h-11 w-11 items-center justify-center bg-success text-white"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-700 dark:text-navy-100">
+                        TheBook.pdf
+                      </p>
+                      <div class="flex text-xs text-slate-400 dark:text-navy-300">
+                        <span>14 MB</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-overlay fixed inset-0 z-[150] hidden bg-slate-900/60"></div>
+    <div class="drawer-content fixed right-0 top-0 z-[151] hidden h-full w-full sm:w-80">
       <div
         class="right-sidebar-tab-wrapper w-ful relative flex h-full flex-col bg-white dark:bg-navy-750"
       >
@@ -190,9 +536,7 @@
             <div class="mt-3 flex space-x-3">
               <a href="apps-kanban.html" class="w-12 text-center">
                 <div class="avatar h-10 w-10">
-                  <div
-                    class="is-initial mask is-squircle bg-success text-white"
-                  >
+                  <div class="is-initial mask is-squircle bg-success text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-5 w-5"
@@ -217,9 +561,7 @@
               </a>
               <a href="dashboards-crm-analytics.html" class="w-12 text-center">
                 <div class="avatar h-10 w-10">
-                  <div
-                    class="is-initial mask is-squircle bg-warning text-white"
-                  >
+                  <div class="is-initial mask is-squircle bg-warning text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-5 w-5"
@@ -295,9 +637,7 @@
               </a>
               <a href="dashboards-banking-1.html" class="w-12 text-center">
                 <div class="avatar h-10 w-10">
-                  <div
-                    class="is-initial mask is-squircle bg-secondary text-white"
-                  >
+                  <div class="is-initial mask is-squircle bg-secondary text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-5 w-5"
@@ -328,8 +668,7 @@
               <div class="rounded-lg bg-slate-150 px-2.5 py-2 dark:bg-navy-600">
                 <div class="flex items-center justify-between space-x-1">
                   <p>
-                    <span
-                      class="text-lg font-medium text-slate-700 dark:text-navy-100"
+                    <span class="text-lg font-medium text-slate-700 dark:text-navy-100"
                       >11.3</span
                     >
                     <span class="text-xs">hr</span>
@@ -390,8 +729,7 @@
               <div class="rounded-lg bg-slate-150 px-2.5 py-2 dark:bg-navy-600">
                 <div class="flex items-center justify-between space-x-1">
                   <p>
-                    <span
-                      class="text-lg font-medium text-slate-700 dark:text-navy-100"
+                    <span class="text-lg font-medium text-slate-700 dark:text-navy-100"
                       >13</span
                     >
                     <span class="text-xs">/22</span>
@@ -412,9 +750,7 @@
 
                 <p class="mt-0.5 text-tiny+ uppercase">Completed tasks</p>
 
-                <div
-                  class="progress mt-3 h-1.5 bg-success/15 dark:bg-success/25"
-                >
+                <div class="progress mt-3 h-1.5 bg-success/15 dark:bg-success/25">
                   <div
                     class="relative w-6/12 overflow-hidden rounded-full bg-success"
                   ></div>
@@ -461,11 +797,7 @@
             <div class="mt-3 grid grid-cols-2 gap-3 px-3">
               <div class="rounded-lg bg-slate-100 p-2.5 dark:bg-navy-600">
                 <div class="flex items-center space-x-2">
-                  <img
-                    class="h-10 w-10"
-                    src="@/assets/images/100x100.png"
-                    alt="image"
-                  />
+                  <img class="h-10 w-10" src="@/assets/images/100x100.png" alt="image" />
                   <div>
                     <h2
                       class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
@@ -477,24 +809,16 @@
                 </div>
 
                 <div class="mt-2 flex items-center justify-between">
-                  <p
-                    class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                  >
+                  <p class="font-medium tracking-wide text-slate-700 dark:text-navy-100">
                     60.33$
                   </p>
-                  <p class="text-xs font-medium tracking-wide text-success">
-                    +3.3%
-                  </p>
+                  <p class="text-xs font-medium tracking-wide text-success">+3.3%</p>
                 </div>
               </div>
 
               <div class="rounded-lg bg-slate-100 p-2.5 dark:bg-navy-600">
                 <div class="flex items-center space-x-2">
-                  <img
-                    class="h-10 w-10"
-                    src="@/assets/images/100x100.png"
-                    alt="image"
-                  />
+                  <img class="h-10 w-10" src="@/assets/images/100x100.png" alt="image" />
                   <div>
                     <h2
                       class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
@@ -506,14 +830,10 @@
                 </div>
 
                 <div class="mt-2 flex items-center justify-between">
-                  <p
-                    class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-                  >
+                  <p class="font-medium tracking-wide text-slate-700 dark:text-navy-100">
                     20.56$
                   </p>
-                  <p class="text-xs font-medium tracking-wide text-success">
-                    +4.11%
-                  </p>
+                  <p class="text-xs font-medium tracking-wide text-success">+4.11%</p>
                 </div>
               </div>
             </div>
@@ -623,9 +943,7 @@
                         />
                       </div>
                       <div>
-                        <p class="text-xs font-medium line-clamp-1">
-                          Travis F.
-                        </p>
+                        <p class="text-xs font-medium line-clamp-1">Travis F.</p>
                         <p
                           class="text-tiny+ text-slate-400 line-clamp-1 dark:text-navy-300"
                         >
@@ -701,9 +1019,7 @@
                         />
                       </div>
                       <div>
-                        <p class="text-xs font-medium line-clamp-1">
-                          Alfredo E .
-                        </p>
+                        <p class="text-xs font-medium line-clamp-1">Alfredo E .</p>
                         <p
                           class="text-tiny+ text-slate-400 line-clamp-1 dark:text-navy-300"
                         >
@@ -764,9 +1080,7 @@
             <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
               <div class="flex items-center justify-between">
                 <p>
-                  <span class="font-medium text-slate-600 dark:text-navy-100"
-                    >35GB</span
-                  >
+                  <span class="font-medium text-slate-600 dark:text-navy-100">35GB</span>
                   of 1TB
                 </p>
                 <a
@@ -791,11 +1105,7 @@
           <div class="grid grid-cols-2 gap-3">
             <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
               <div class="flex justify-between space-x-1">
-                <p
-                  class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                >
-                  14
-                </p>
+                <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">14</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   stroke-width="1.5"
@@ -815,11 +1125,7 @@
             </div>
             <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
               <div class="flex justify-between">
-                <p
-                  class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                >
-                  36
-                </p>
+                <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">36</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5 text-success"
@@ -839,11 +1145,7 @@
             </div>
             <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
               <div class="flex justify-between">
-                <p
-                  class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                >
-                  143
-                </p>
+                <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">143</p>
 
                 <i class="fa fa-spinner text-base text-warning"></i>
               </div>
@@ -851,11 +1153,7 @@
             </div>
             <div class="rounded-lg bg-slate-100 p-3 dark:bg-navy-600">
               <div class="flex justify-between">
-                <p
-                  class="text-xl font-semibold text-slate-700 dark:text-navy-100"
-                >
-                  279
-                </p>
+                <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">279</p>
 
                 <i class="fa-solid fa-list-check text-base text-info"></i>
               </div>
@@ -863,9 +1161,7 @@
             </div>
           </div>
 
-          <div
-            class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-          >
+          <div class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600">
             <div class="flex items-center space-x-3">
               <img
                 class="h-10 w-10 rounded-lg object-cover object-center"
@@ -873,22 +1169,16 @@
                 alt="image"
               />
               <div>
-                <p
-                  class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                >
+                <p class="font-medium leading-snug text-slate-700 dark:text-navy-100">
                   LMS App Design
                 </p>
-                <p class="text-xs text-slate-400 dark:text-navy-300">
-                  Updated at 7 Sep
-                </p>
+                <p class="text-xs text-slate-400 dark:text-navy-300">Updated at 7 Sep</p>
               </div>
             </div>
 
             <div class="mt-4">
               <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                <div
-                  class="w-4/12 rounded-full bg-primary dark:bg-accent"
-                ></div>
+                <div class="w-4/12 rounded-full bg-primary dark:bg-accent"></div>
               </div>
               <p
                 class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
@@ -942,9 +1232,7 @@
             </div>
           </div>
 
-          <div
-            class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-          >
+          <div class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600">
             <div class="flex items-center space-x-3">
               <img
                 class="h-10 w-10 rounded-lg object-cover object-center"
@@ -952,22 +1240,16 @@
                 alt="image"
               />
               <div>
-                <p
-                  class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                >
+                <p class="font-medium leading-snug text-slate-700 dark:text-navy-100">
                   Store Dashboard
                 </p>
-                <p class="text-xs text-slate-400 dark:text-navy-300">
-                  Updated at 11 Sep
-                </p>
+                <p class="text-xs text-slate-400 dark:text-navy-300">Updated at 11 Sep</p>
               </div>
             </div>
 
             <div class="mt-4">
               <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                <div
-                  class="w-6/12 rounded-full bg-primary dark:bg-accent"
-                ></div>
+                <div class="w-6/12 rounded-full bg-primary dark:bg-accent"></div>
               </div>
               <p
                 class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
@@ -1021,9 +1303,7 @@
             </div>
           </div>
 
-          <div
-            class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-          >
+          <div class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600">
             <div class="flex items-center space-x-3">
               <img
                 class="h-10 w-10 rounded-lg object-cover object-center"
@@ -1031,22 +1311,16 @@
                 alt="image"
               />
               <div>
-                <p
-                  class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                >
+                <p class="font-medium leading-snug text-slate-700 dark:text-navy-100">
                   Chat Mobile App
                 </p>
-                <p class="text-xs text-slate-400 dark:text-navy-300">
-                  Updated at 19 Sep
-                </p>
+                <p class="text-xs text-slate-400 dark:text-navy-300">Updated at 19 Sep</p>
               </div>
             </div>
 
             <div class="mt-4">
               <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                <div
-                  class="w-2/12 rounded-full bg-primary dark:bg-accent"
-                ></div>
+                <div class="w-2/12 rounded-full bg-primary dark:bg-accent"></div>
               </div>
               <p
                 class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
@@ -1100,9 +1374,7 @@
             </div>
           </div>
 
-          <div
-            class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600"
-          >
+          <div class="mt-4 rounded-lg border border-slate-150 p-3 dark:border-navy-600">
             <div class="flex items-center space-x-3">
               <img
                 class="h-10 w-10 rounded-lg object-cover object-center"
@@ -1110,22 +1382,16 @@
                 alt="image"
               />
               <div>
-                <p
-                  class="font-medium leading-snug text-slate-700 dark:text-navy-100"
-                >
+                <p class="font-medium leading-snug text-slate-700 dark:text-navy-100">
                   NFT Marketplace App
                 </p>
-                <p class="text-xs text-slate-400 dark:text-navy-300">
-                  Updated at 5 Sep
-                </p>
+                <p class="text-xs text-slate-400 dark:text-navy-300">Updated at 5 Sep</p>
               </div>
             </div>
 
             <div class="mt-4">
               <div class="progress h-1.5 bg-slate-150 dark:bg-navy-500">
-                <div
-                  class="w-9/12 rounded-full bg-primary dark:bg-accent"
-                ></div>
+                <div class="w-9/12 rounded-full bg-primary dark:bg-accent"></div>
               </div>
               <p
                 class="mt-2 text-right text-xs+ font-medium text-primary dark:text-accent-light"
@@ -1206,13 +1472,9 @@
 
             <p class="mt-2 text-xs">Today</p>
 
-            <p class="text-lg font-medium text-slate-700 dark:text-navy-100">
-              6hr 22m
-            </p>
+            <p class="text-lg font-medium text-slate-700 dark:text-navy-100">6hr 22m</p>
 
-            <div
-              class="progress mt-3 h-2 bg-secondary/15 dark:bg-secondary-light/25"
-            >
+            <div class="progress mt-3 h-2 bg-secondary/15 dark:bg-secondary-light/25">
               <div
                 class="is-active relative w-8/12 overflow-hidden rounded-full bg-secondary dark:bg-secondary-light"
               ></div>
@@ -1247,9 +1509,7 @@
                 <i class="fa fa-user-edit text-tiny"></i>
               </div>
               <div class="timeline-item-content flex-1 pl-4">
-                <div
-                  class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                >
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
                   <p
                     class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
                   >
@@ -1276,9 +1536,7 @@
                 <i class="fa-solid fa-image text-tiny"></i>
               </div>
               <div class="timeline-item-content flex-1 pl-4">
-                <div
-                  class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                >
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
                   <p
                     class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
                   >
@@ -1290,36 +1548,12 @@
                 </div>
                 <p class="py-1">Mores Clarke added new image gallery</p>
                 <div class="mt-4 grid grid-cols-3 gap-3">
-                  <img
-                    class="rounded-lg"
-                    src="@/assets/images/800x600.png"
-                    alt="image"
-                  />
-                  <img
-                    class="rounded-lg"
-                    src="@/assets/images/800x600.png"
-                    alt="image"
-                  />
-                  <img
-                    class="rounded-lg"
-                    src="@/assets/images/800x600.png"
-                    alt="image"
-                  />
-                  <img
-                    class="rounded-lg"
-                    src="@/assets/images/800x600.png"
-                    alt="image"
-                  />
-                  <img
-                    class="rounded-lg"
-                    src="@/assets/images/800x600.png"
-                    alt="image"
-                  />
-                  <img
-                    class="rounded-lg"
-                    src="@/assets/images/800x600.png"
-                    alt="image"
-                  />
+                  <img class="rounded-lg" src="@/assets/images/800x600.png" alt="image" />
+                  <img class="rounded-lg" src="@/assets/images/800x600.png" alt="image" />
+                  <img class="rounded-lg" src="@/assets/images/800x600.png" alt="image" />
+                  <img class="rounded-lg" src="@/assets/images/800x600.png" alt="image" />
+                  <img class="rounded-lg" src="@/assets/images/800x600.png" alt="image" />
+                  <img class="rounded-lg" src="@/assets/images/800x600.png" alt="image" />
                 </div>
                 <div class="mt-4">
                   <span class="font-medium text-slate-600 dark:text-navy-100">
@@ -1349,9 +1583,7 @@
                 <i class="fa fa-leaf text-tiny"></i>
               </div>
               <div class="timeline-item-content flex-1 pl-4">
-                <div
-                  class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                >
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
                   <p
                     class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
                   >
@@ -1415,23 +1647,17 @@
                 <i class="fa fa-project-diagram text-tiny"></i>
               </div>
               <div class="timeline-item-content flex-1 pl-4">
-                <div
-                  class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                >
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
                   <p
                     class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
                   >
                     ER Diagram
                   </p>
-                  <span class="text-xs text-slate-400 dark:text-navy-300"
-                    >a day ago</span
-                  >
+                  <span class="text-xs text-slate-400 dark:text-navy-300">a day ago</span>
                 </div>
                 <p class="py-1">Team completed the ER diagram app</p>
                 <div>
-                  <p class="text-xs text-slate-400 dark:text-navy-300">
-                    Members:
-                  </p>
+                  <p class="text-xs text-slate-400 dark:text-navy-300">Members:</p>
                   <div class="mt-2 flex justify-between">
                     <div class="flex flex-wrap -space-x-2">
                       <div class="avatar h-7 w-7 hover:z-10">
@@ -1503,17 +1729,13 @@
                 <i class="fa fa-history text-tiny"></i>
               </div>
               <div class="timeline-item-content flex-1 pl-4">
-                <div
-                  class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0"
-                >
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
                   <p
                     class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0"
                   >
                     Weekly Report
                   </p>
-                  <span class="text-xs text-slate-400 dark:text-navy-300"
-                    >a day ago</span
-                  >
+                  <span class="text-xs text-slate-400 dark:text-navy-300">a day ago</span>
                 </div>
                 <p class="py-1">The weekly report was uploaded</p>
               </div>
@@ -1522,9 +1744,7 @@
           <div class="h-18"></div>
         </div>
 
-        <div
-          class="pointer-events-none absolute bottom-4 flex w-full justify-center"
-        >
+        <div class="pointer-events-none absolute bottom-4 flex w-full justify-center">
           <div
             class="pointer-events-auto mx-auto flex space-x-1 rounded-full border border-slate-150 bg-white px-4 py-0.5 shadow-lg dark:border-navy-700 dark:bg-navy-900"
           >
@@ -1632,3 +1852,20 @@
     </div>
   </div>
 </template>
+<script setup>
+import { ref } from 'vue'
+import { useChatStore } from '@/stores/chat';
+import { useStyleStore } from '@/stores/style';
+import { storeToRefs } from 'pinia'
+
+const chatStore = useChatStore()
+const styleStore = useStyleStore()
+const { getRightSidebarStatus } = storeToRefs(chatStore)
+const { darkMode } = storeToRefs(styleStore) 
+const { toggleRightSidebar} = chatStore
+const { setDarkMode } = styleStore
+const activeTab = ref('images')
+const setActiveTab = (val) => {
+  activeTab.value = val
+}
+</script>

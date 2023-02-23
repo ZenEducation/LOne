@@ -1,7 +1,7 @@
 <template>
   <!-- Minimized Sidebar Panel Isolated-->
-  <div class="sidebar-panel-min">
-    <div class="flex h-full flex-col bg-white dark:bg-navy-750">
+  <div class="pl-[var(--main-sidebar-width)] h-screen hidden md:block">
+    <div class="flex h-full flex-col bg-white xl:px-[0.5rem] dark:bg-navy-750">
       <div class="flex h-18 waitshrink-0 items-center justify-center">
         <div class="avatar flex h-10 w-10">
           <div
@@ -31,11 +31,11 @@
             <li>
               <a
                 href="#"
-                class="btn h-10 w-10 p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                class="flex text-center h-10 w-10 p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5.5 w-5.5"
+                  class="h-5.5 w-5.5 m-auto "
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -52,11 +52,11 @@
             <li>
               <a
                 href="#"
-                class="btn h-10 w-10 p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                class="flex text-center h-10 w-10 p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5.5 w-5.5"
+                  class="h-5.5 w-5.5 m-auto"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -71,9 +71,9 @@
               </a>
             </li>
           </ul>
-          <div
-            class="my-4 mx-4 h-px waitshrink-0 bg-slate-200 dark:bg-navy-500"
-          ></div>
+          <hr
+            class="my-4 mx-2 h-[4px] waitshrink-0 bg-slate-200 dark:bg-navy-500"
+          />
           <div class="flex flex-col">
             <div
               class="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
@@ -289,11 +289,11 @@
 
         <div class="py-3">
           <button
-            class="btn h-10 w-10 rounded-full border border-slate-200 p-0 font-medium hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
+            class="inline-flex h-10 w-10 rounded-full border border-slate-200 p-0 font-medium hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-6 w-6 m-auto"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

@@ -8,7 +8,7 @@
 @import "_table.css";
 
 @import "./app.css";
-/* @import "./components.css"; */
+@import "./components.css";
 @import "./pages.css";
 /* @import "~highlight.js/styles/atom-one-dark.css";  */
 /* Just for demo purpose only for highlighting code */

@@ -34,7 +34,9 @@
     "@rollup/plugin-inject": "^5.0.2",
     "@rollup/plugin-terser": "^0.2.0",
     "@tailwindcss/line-clamp": "^0.4.2",
-    "@vueuse/core": "^9.13.0",
+
+    "@vueuse/core": "^9.12.0",
+
     "aws-amplify": "^5.0.5",
     "gridjs-vue": "^5.0.4",
     "numeral": "^2.0.6",
