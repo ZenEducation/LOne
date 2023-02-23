@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import Kanban from "@/components/Apps/Kanban.vue";
+import Kanban from "@/components/Apps/Kanban/Kanban.vue";
 </script>
 
 <style scoped>

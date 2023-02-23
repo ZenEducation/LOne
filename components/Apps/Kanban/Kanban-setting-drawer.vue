@@ -22,7 +22,6 @@
           <div class="-mr-1.5 flex">
             <button
               class="
-                btn
                 h-7
                 w-7
                 rounded-full
@@ -40,7 +39,7 @@
                 class="h-5.5 w-5.5 text-primary dark:text-accent"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                style="display: none"
+                stroke-width="2"
               >
                 <path
                   d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
@@ -48,10 +47,9 @@
               </svg>
             </button>
             <button
-              @click="$emit('close')"
+              @click="$event => $emit('close')"
               data-close-drawer
               class="
-                btn
                 h-7
                 w-7
                 rounded-full
@@ -91,7 +89,6 @@
                 <div class="-mr-1.5 flex">
                   <button
                     class="
-                      btn
                       ac-trigger
                       h-6
                       w-6
@@ -383,7 +380,6 @@
                 <div class="-mr-1.5 flex">
                   <button
                     class="
-                      btn
                       h-6
                       w-6
                       rounded-full
@@ -414,7 +410,6 @@
                   <button
                     class="
                       ac-trigger
-                      btn
                       h-6
                       w-6
                       rounded-full
@@ -449,7 +444,14 @@
                   <li class="timeline-item">
                     <div
                       class="
-                        timeline-item-point
+                        flex
+                        h-6
+                        w-6
+                        relative
+                        m-0
+                        flex-shrink-0
+                        items-center
+                        justify-center
                         rounded-full
                         border border-current
                         bg-white
@@ -488,7 +490,7 @@
                       <div class="avatar mt-2 h-20 w-20">
                         <img
                           class="mask is-squircle"
-                          src="images/200x200.png"
+                          src="@/assets/images/200x200.png"
                           alt="avatar"
                         />
                       </div>
@@ -497,7 +499,14 @@
                   <li class="timeline-item">
                     <div
                       class="
-                        timeline-item-point
+                        flex
+                        h-6
+                        w-6
+                        relative
+                        m-0
+                        flex-shrink-0
+                        items-center
+                        justify-center
                         rounded-full
                         border border-current
                         bg-white
@@ -526,7 +535,7 @@
                             sm:pb-0
                           "
                         >
-                          Images Added
+                          @/assets/images Added
                         </p>
                         <span class="text-xs text-slate-400 dark:text-navy-300"
                           >1 hour ago</span
@@ -536,32 +545,32 @@
                       <div class="mt-4 grid grid-cols-3 gap-3">
                         <img
                           class="rounded-lg"
-                          src="images/800x600.png"
+                          src="@/assets/images/800x600.png"
                           alt="image"
                         />
                         <img
                           class="rounded-lg"
-                          src="images/800x600.png"
+                          src="@/assets/images/800x600.png"
                           alt="image"
                         />
                         <img
                           class="rounded-lg"
-                          src="images/800x600.png"
+                          src="@/assets/images/800x600.png"
                           alt="image"
                         />
                         <img
                           class="rounded-lg"
-                          src="images/800x600.png"
+                          src="@/assets/images/800x600.png"
                           alt="image"
                         />
                         <img
                           class="rounded-lg"
-                          src="images/800x600.png"
+                          src="@/assets/images/800x600.png"
                           alt="image"
                         />
                         <img
                           class="rounded-lg"
-                          src="images/800x600.png"
+                          src="@/assets/images/800x600.png"
                           alt="image"
                         />
                       </div>
@@ -599,7 +608,14 @@
                   <li class="timeline-item">
                     <div
                       class="
-                        timeline-item-point
+                        flex
+                        h-6
+                        w-6
+                        relative
+                        m-0
+                        flex-shrink-0
+                        items-center
+                        justify-center
                         rounded-full
                         border border-current
                         bg-white
@@ -726,7 +742,14 @@
                   <li class="timeline-item">
                     <div
                       class="
-                        timeline-item-point
+                        flex
+                        h-6
+                        w-6
+                        relative
+                        m-0
+                        flex-shrink-0
+                        items-center
+                        justify-center
                         rounded-full
                         border border-current
                         bg-white
@@ -775,7 +798,7 @@
                                   ring ring-white
                                   dark:ring-navy-700
                                 "
-                                src="images/200x200.png"
+                                src="@/assets/images/200x200.png"
                                 alt="avatar"
                               />
                             </div>
@@ -804,7 +827,7 @@
                                   ring ring-white
                                   dark:ring-navy-700
                                 "
-                                src="images/200x200.png"
+                                src="@/assets/images/200x200.png"
                                 alt="avatar"
                               />
                             </div>
@@ -816,7 +839,7 @@
                                   ring ring-white
                                   dark:ring-navy-700
                                 "
-                                src="images/200x200.png"
+                                src="@/assets/images/200x200.png"
                                 alt="avatar"
                               />
                             </div>
@@ -828,14 +851,13 @@
                                   ring ring-white
                                   dark:ring-navy-700
                                 "
-                                src="images/200x200.png"
+                                src="@/assets/images/200x200.png"
                                 alt="avatar"
                               />
                             </div>
                           </div>
                           <button
                             class="
-                              btn
                               h-7
                               w-7
                               rounded-full
@@ -875,7 +897,14 @@
                   <li class="timeline-item">
                     <div
                       class="
-                        timeline-item-point
+                        flex
+                        h-6
+                        w-6
+                        relative
+                        m-0
+                        flex-shrink-0
+                        items-center
+                        justify-center
                         rounded-full
                         border border-current
                         bg-white
